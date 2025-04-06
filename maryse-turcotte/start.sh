@@ -9,7 +9,7 @@ fuser -k 3000/tcp 2>/dev/null || true
 fuser -k 8000/tcp 2>/dev/null || true
 
 # Start the backend server
-echo "Starting Maryse Turcotte backend..."
+echo "Starting Maryse Turcotte Neural Core..."
 cd "$SCRIPT_DIR/backend" && npm install && node index.js &
 BACKEND_PID=$!
 
@@ -17,18 +17,18 @@ BACKEND_PID=$!
 sleep 2
 
 # Start the web server
-echo "Starting Maryse Turcotte Web UI..."
+echo "Starting Maryse Turcotte Neural Interface..."
 cd "$SCRIPT_DIR/web" && python3 -m http.server 8000 &
 WEB_PID=$!
 
-echo "Maryse Turcotte is running!"
-echo "Access the UI at: http://localhost:8000"
-echo "Backend API running at: http://localhost:3000"
-echo "Press Ctrl+C to stop all services"
+echo "🧠 Maryse Turcotte Neural System Online!"
+echo "Access Neural Interface at: http://localhost:8000/character.html"
+echo "Neural Core API running at: http://localhost:3000"
+echo "Press Ctrl+C to terminate neural connections"
 
 # Function to cleanup processes on exit
 cleanup() {
-    echo "Shutting down services..."
+    echo "Shutting down neural systems..."
     kill $BACKEND_PID 2>/dev/null
     kill $WEB_PID 2>/dev/null
     exit 0
