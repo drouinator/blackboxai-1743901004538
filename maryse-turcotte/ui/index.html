@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maryse Turcotte</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: rgba(17, 24, 39, 0.95);
+            -webkit-app-region: drag;
+        }
+        .no-drag {
+            -webkit-app-region: no-drag;
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen p-4">
+    <!-- Header -->
+    <header class="flex justify-between items-center mb-6">
+        <div class="flex items-center">
+            <h1 class="text-2xl font-semibold">Maryse Turcotte</h1>
+            <span class="ml-2 px-2 py-1 bg-green-500 rounded-full text-xs">Active</span>
+        </div>
+        <div class="flex items-center space-x-4 no-drag">
+            <button id="settingsBtn" class="hover:text-blue-400 transition-colors">
+                <i class="fas fa-cog text-xl"></i>
+            </button>
+            <button id="minimizeBtn" class="hover:text-gray-400 transition-colors">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="grid grid-cols-3 gap-6">
+        <!-- Voice Command Section -->
+        <div class="col-span-2 bg-gray-800 rounded-lg p-6 no-drag">
+            <div class="text-center mb-8">
+                <button id="micButton" class="bg-blue-600 hover:bg-blue-700 rounded-full p-6 transition-all duration-300">
+                    <i class="fas fa-microphone text-4xl"></i>
+                </button>
+                <p id="voiceStatus" class="mt-4 text-gray-400">Click to start voice command</p>
+            </div>
+            <div class="mt-6">
+                <div class="flex items-center space-x-2 mb-4">
+                    <i class="fas fa-terminal text-gray-400"></i>
+                    <input type="text" id="commandInput" 
+                           class="flex-1 bg-gray-700 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           placeholder="Type a command...">
+                    <button id="sendCommand" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div id="commandOutput" class="bg-gray-900 rounded p-4 h-48 overflow-y-auto font-mono text-sm">
+                    <p class="text-green-400">Maryse Turcotte v1.0.0 ready...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Stats Section -->
+        <div class="bg-gray-800 rounded-lg p-6 no-drag">
+            <h2 class="text-xl font-semibold mb-4">System Stats</h2>
+            <div class="space-y-4">
+                <!-- CPU -->
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="text-gray-400">CPU Usage</span>
+                        <span id="cpuUsage">-%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div id="cpuBar" class="bg-blue-500 rounded-full h-2" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Memory -->
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="text-gray-400">Memory</span>
+                        <span id="memoryUsage">-%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div id="memoryBar" class="bg-green-500 rounded-full h-2" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Disk -->
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="text-gray-400">Disk</span>
+                        <span id="diskUsage">-%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div id="diskBar" class="bg-purple-500 rounded-full h-2" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Log -->
+            <div class="mt-6">
+                <h3 class="text-lg font-semibold mb-2">Recent Activity</h3>
+                <div id="activityLog" class="space-y-2 text-sm text-gray-400">
+                    <!-- Activity items will be added here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
