@@ -8,7 +8,7 @@
     "dev": "electron . --no-sandbox"
   },
   "dependencies": {
-    "electron": "^25.0.0"
+    "electron": "^28.3.2"
   },
   "devDependencies": {
     "electron-reload": "^1.5.0"
